@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Changer</title>
+</head>
+<body>
+
+<h2>Dynamic Image Changer</h2>
+
+<img id="myImage"
+     src="https://via.placeholder.com/300x200?text=Image+1"
+     width="300">
+
+<br><br>
+
+<button onclick="changeImage1()">Image 1</button>
+
+<button onclick="changeImage2()">Image 2</button>
+
+<button onclick="changeImage3()">Image 3</button>
+
+<script>
+
+function changeImage1() {
+    document.getElementById("myImage").src =
+    "https://via.placeholder.com/300x200?text=Image+1";
+}
+
+function changeImage2() {
+    document.getElementById("myImage").src =
+    "https://via.placeholder.com/300x200?text=Image+2";
+}
+
+function changeImage3() {
+    document.getElementById("myImage").src =
+    "https://via.placeholder.com/300x200?text=Image+3";
+}
+
+</script>
+
+</body>
+</html>

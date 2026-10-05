@@ -1,0 +1,36 @@
+import React, { useState } from "react";
+
+function Product({ name, price }) {
+  const [count, setCount] = useState(0);
+
+  function addToCart() {
+    setCount(count + 1);
+  }
+
+  return (
+    <div>
+      <h2>{name}</h2>
+      <p>Price: ₹{price}</p>
+
+      <button onClick={addToCart}>
+        Add to Cart
+      </button>
+
+      <p>Cart Items: {count}</p>
+      <p>Total: ₹{price * count}</p>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <h1>Shopping Cart</h1>
+
+      <Product name="Laptop" price={50000} />
+      <Product name="Headphones" price={2000} />
+    </div>
+  );
+}
+
+export default App;

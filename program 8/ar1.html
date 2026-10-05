@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Railway Login</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+const { useState } = React;
+
+function RailwayHeader() {
+    return (
+        <div>
+            <h1>Indian Railway Portal</h1>
+            <p>Passenger Login</p>
+        </div>
+    );
+}
+
+function PassengerLogin() {
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
+
+    function login() {
+
+        if (username === "" || password === "") {
+            setMessage("Enter username and password");
+            return;
+        }
+
+        if (password.length < 6) {
+            setMessage("Password must contain at least 6 characters");
+            return;
+        }
+
+        setMessage("Passenger Login Successful!");
+    }
+
+    return (
+        <div>
+
+            <input
+                placeholder="Username"
+                onChange={(e) => setUsername(e.target.value)}
+            />
+
+            <br /><br />
+
+            <input
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <br /><br />
+
+            <button onClick={login}>
+                Login
+            </button>
+
+            <h3>{message}</h3>
+
+        </div>
+    );
+}
+
+function App() {
+    return (
+        <div>
+            <RailwayHeader />
+            <PassengerLogin />
+        </div>
+    );
+}
+
+ReactDOM.createRoot(
+    document.getElementById("root")
+).render(<App />);
+
+</script>
+
+</body>
+</html>

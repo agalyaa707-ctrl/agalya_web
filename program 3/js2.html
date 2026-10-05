@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Form</title>
+</head>
+<body>
+
+<h2>Online Shopping</h2>
+
+<form onsubmit="return orderValidate()">
+
+    Customer Name:
+    <input type="text" id="name">
+    <br><br>
+
+    Email:
+    <input type="text" id="email">
+    <br><br>
+
+    Product:
+    <select id="product">
+        <option value="">Select Product</option>
+        <option>Mobile Phone</option>
+        <option>Laptop</option>
+        <option>Headphones</option>
+    </select>
+    <br><br>
+
+    Quantity:
+    <input type="number" id="quantity">
+    <br><br>
+
+    <button type="submit">Place Order</button>
+
+</form>
+
+<script>
+function orderValidate() {
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let product = document.getElementById("product").value;
+    let quantity = document.getElementById("quantity").value;
+
+    if (name == "") {
+        alert("Enter customer name");
+        return false;
+    }
+
+    if (!email.includes("@")) {
+        alert("Enter valid email");
+        return false;
+    }
+
+    if (product == "") {
+        alert("Please select a product");
+        return false;
+    }
+
+    if (quantity <= 0) {
+        alert("Enter valid quantity");
+        return false;
+    }
+
+    alert("Order Placed Successfully!");
+    return true;
+}
+</script>
+
+</body>
+</html>

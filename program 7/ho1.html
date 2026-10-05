@@ -1,0 +1,82 @@
+import React, { useState } from "react";
+
+function App() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    course: "",
+    phone: ""
+  });
+
+  const [message, setMessage] = useState("");
+
+  function handleChange(e) {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    });
+  }
+
+  function register(e) {
+    e.preventDefault();
+
+    if (!form.name || !form.email || !form.course || !form.phone) {
+      setMessage("Please fill all fields");
+      return;
+    }
+
+    if (form.phone.length !== 10) {
+      setMessage("Enter a valid 10-digit phone number");
+      return;
+    }
+
+    setMessage("Student registered successfully!");
+  }
+
+  return (
+    <div>
+      <h1>College Student Registration</h1>
+
+      <form onSubmit={register}>
+
+        <input
+          name="name"
+          placeholder="Full Name"
+          onChange={handleChange}
+        />
+        <br /><br />
+
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          onChange={handleChange}
+        />
+        <br /><br />
+
+        <select name="course" onChange={handleChange}>
+          <option value="">Select Course</option>
+          <option value="MCA">MCA</option>
+          <option value="MSc CS">MSc Computer Science</option>
+          <option value="MBA">MBA</option>
+        </select>
+
+        <br /><br />
+
+        <input
+          name="phone"
+          placeholder="Phone Number"
+          onChange={handleChange}
+        />
+
+        <br /><br />
+
+        <button type="submit">Register</button>
+      </form>
+
+      <h3>{message}</h3>
+    </div>
+  );
+}
+
+export default App;

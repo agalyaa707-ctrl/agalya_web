@@ -1,0 +1,39 @@
+import React from "react";
+
+function Employee({ name, department, salary }) {
+  return (
+    <div>
+      <h2>{name}</h2>
+      <p>Department: {department}</p>
+      <p>Salary: ₹{salary}</p>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <h1>Employee Details</h1>
+
+      <Employee
+        name="Arun"
+        department="IT"
+        salary="35000"
+      />
+
+      <Employee
+        name="Priya"
+        department="HR"
+        salary="30000"
+      />
+
+      <Employee
+        name="Kumar"
+        department="Finance"
+        salary="40000"
+      />
+    </div>
+  );
+}
+
+export default App;

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank Login</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const { useState } = React;
+
+        function BankHeader() {
+            return (
+                <div>
+                    <h1>ABC Bank</h1>
+                    <p>Secure Online Banking</p>
+                </div>
+            );
+        }
+
+        function Login() {
+
+            const [account, setAccount] = useState("");
+            const [pin, setPin] = useState("");
+            const [message, setMessage] = useState("");
+
+            function login() {
+
+                if (account === "" || pin === "") {
+                    setMessage("Please enter Account Number and PIN");
+                    return;
+                }
+
+                if (pin.length !== 4) {
+                    setMessage("PIN must contain 4 digits");
+                    return;
+                }
+
+                setMessage("Login Successful!");
+            }
+
+            return (
+                <div>
+
+                    <h2>Internet Banking Login</h2>
+
+                    <input
+                        type="text"
+                        placeholder="Account Number"
+                        onChange={(e) => setAccount(e.target.value)}
+                    />
+
+                    <br /><br />
+
+                    <input
+                        type="password"
+                        placeholder="4 Digit PIN"
+                        maxLength="4"
+                        onChange={(e) => setPin(e.target.value)}
+                    />
+
+                    <br /><br />
+
+                    <button onClick={login}>
+                        Login
+                    </button>
+
+                    <h3>{message}</h3>
+
+                </div>
+            );
+        }
+
+        function App() {
+            return (
+                <div>
+
+                    <BankHeader />
+
+                    <Login />
+
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(
+            document.getElementById("root")
+        ).render(<App />);
+
+    </script>
+
+</body>
+</html>

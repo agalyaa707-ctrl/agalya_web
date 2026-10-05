@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+function App() {
+
+    const [username, setUsername] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
+    const [message, setMessage] = React.useState("");
+
+    function register() {
+
+        if (username.length < 4) {
+            setMessage("Username must contain at least 4 characters");
+            return;
+        }
+
+        if (!email.includes("@")) {
+            setMessage("Invalid email address");
+            return;
+        }
+
+        if (password.length < 6) {
+            setMessage("Password must contain at least 6 characters");
+            return;
+        }
+
+        setMessage("Registration successful!");
+    }
+
+    return (
+        <div>
+            <h1>Registration Form</h1>
+
+            <input
+                type="text"
+                placeholder="Enter username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+            />
+
+            <br /><br />
+
+            <input
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
+
+            <br /><br />
+
+            <input
+                type="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <br /><br />
+
+            <button onClick={register}>
+                Register
+            </button>
+
+            <h3>{message}</h3>
+        </div>
+    );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+</script>
+
+</body>
+</html>

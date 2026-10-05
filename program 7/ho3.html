@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+function App() {
+
+    const [email, setEmail] = React.useState("");
+    const [qualification, setQualification] = React.useState("");
+
+    return (
+        <div>
+            <h1>Student Registration</h1>
+
+            <label>Email:</label>
+            <br />
+
+            <input
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
+
+            <br /><br />
+
+            <label>Qualification:</label>
+            <br />
+
+            <select
+                value={qualification}
+                onChange={(e) => setQualification(e.target.value)}
+            >
+                <option value="">Select Qualification</option>
+                <option value="BSc">BSc</option>
+                <option value="BCA">BCA</option>
+                <option value="MSc">MSc</option>
+                <option value="MCA">MCA</option>
+            </select>
+
+            <br /><br />
+
+            <button onClick={() => alert("Registration Successful!")}>
+                Register
+            </button>
+        </div>
+    );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+</script>
+
+</body>
+</html>

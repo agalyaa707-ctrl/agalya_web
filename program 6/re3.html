@@ -1,0 +1,45 @@
+import React, { useState } from "react";
+
+function Student({ name, marks }) {
+  const [grade, setGrade] = useState("");
+
+  function calculateGrade() {
+    if (marks >= 90) {
+      setGrade("A+");
+    } else if (marks >= 80) {
+      setGrade("A");
+    } else if (marks >= 70) {
+      setGrade("B");
+    } else if (marks >= 50) {
+      setGrade("C");
+    } else {
+      setGrade("Fail");
+    }
+  }
+
+  return (
+    <div>
+      <h2>Student: {name}</h2>
+      <p>Marks: {marks}</p>
+
+      <button onClick={calculateGrade}>
+        Calculate Grade
+      </button>
+
+      <h3>Grade: {grade}</h3>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <h1>Student Result System</h1>
+
+      <Student name="Akil" marks={85} />
+      <Student name="Ravi" marks={65} />
+    </div>
+  );
+}
+
+export default App;

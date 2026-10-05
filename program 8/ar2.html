@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Login</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+const { useState } = React;
+
+function HospitalHeader() {
+    return (
+        <div>
+            <h1>City Hospital</h1>
+            <p>Staff Management Portal</p>
+        </div>
+    );
+}
+
+function StaffLogin() {
+
+    const [staffId, setStaffId] = useState("");
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
+
+    function login() {
+
+        if (staffId === "" || password === "") {
+            setMessage("Please fill all fields");
+            return;
+        }
+
+        if (staffId === "STAFF101" && password === "1234") {
+            setMessage("Staff Login Successful!");
+        } else {
+            setMessage("Invalid Staff ID or Password");
+        }
+    }
+
+    return (
+        <div>
+
+            <input
+                placeholder="Staff ID"
+                onChange={(e) => setStaffId(e.target.value)}
+            />
+
+            <br /><br />
+
+            <input
+                type="password"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <br /><br />
+
+            <button onClick={login}>
+                Staff Login
+            </button>
+
+            <h3>{message}</h3>
+
+        </div>
+    );
+}
+
+function App() {
+    return (
+        <div>
+            <HospitalHeader />
+            <StaffLogin />
+        </div>
+    );
+}
+
+ReactDOM.createRoot(
+    document.getElementById("root")
+).render(<App />);
+
+</script>
+
+</body>
+</html>

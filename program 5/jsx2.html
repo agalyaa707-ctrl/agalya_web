@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Attendance</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+function App() {
+    const [status, setStatus] = React.useState("Not Marked");
+
+    return (
+        <div>
+            <h1>Student Attendance</h1>
+
+            <h2>Student: Akil</h2>
+
+            <h3>Status: {status}</h3>
+
+            <button onClick={() => setStatus("Present")}>
+                Mark Present
+            </button>
+
+            <button onClick={() => setStatus("Absent")}>
+                Mark Absent
+            </button>
+        </div>
+    );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+</script>
+
+</body>
+</html>
